@@ -1,7 +1,9 @@
 package ch.zli.coworkingSpace.repository;
 
-import ch.zli.coworkingSpace.model.BookingDatesEntity;
+import ch.zli.coworkingSpace.model.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<BookingDatesEntity, Long> {
+import java.util.UUID;
+
+public interface UserRepository extends CrudRepository<UserEntity, UUID> {
 }
