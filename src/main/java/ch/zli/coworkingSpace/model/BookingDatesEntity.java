@@ -31,4 +31,8 @@ public class BookingDatesEntity {
 
     @Column(name = "booked", nullable = false)
     private boolean booked;
+
+    @Column(name = "user_id", nullable = false)
+    private int user_id;
+
 }
