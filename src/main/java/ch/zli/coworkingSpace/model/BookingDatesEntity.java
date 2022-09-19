@@ -5,26 +5,23 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.security.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 
 @Getter
 @Setter
 @Entity(name = "BOOKINGDATES")
 public class BookingDatesEntity {
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+
+    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    @Type(type = "org.hibernate.type.UUIDCharType")
-    UUID id = UUID.randomUUID();
+    private Long id;
 
     @Column(name = "date", nullable = false)
-    private Timestamp date;
+    @Temporal(TemporalType.DATE)
+    private Date date;
 
     @Column(name = "whole_day", nullable = false)
     private boolean wholeDay;

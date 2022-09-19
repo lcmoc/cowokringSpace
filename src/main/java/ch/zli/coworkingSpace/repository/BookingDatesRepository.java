@@ -6,6 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.UUID;
 
-public interface BookingDatesRepository extends CrudRepository<BookingDatesEntity, UUID> {
-    List<BookingDatesEntity> findAll();
+public interface BookingDatesRepository extends CrudRepository<BookingDatesEntity, Long> {
 }

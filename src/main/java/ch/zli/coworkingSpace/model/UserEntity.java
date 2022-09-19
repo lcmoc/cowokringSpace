@@ -4,10 +4,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.UUID;
 
@@ -15,12 +12,9 @@ import java.util.UUID;
 @Setter
 @Entity(name = "USER")
 public class UserEntity implements Serializable {
-    @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", updatable = false, nullable = false)
-    @Type(type = "org.hibernate.type.UUIDCharType")
-    UUID id = UUID.randomUUID();
+    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
+    Long id;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;

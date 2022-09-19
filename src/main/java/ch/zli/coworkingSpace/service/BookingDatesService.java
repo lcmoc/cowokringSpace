@@ -14,17 +14,16 @@ import java.util.UUID;
 public class BookingDatesService {
     private final BookingDatesRepository repository;
 
-
     public BookingDatesService(BookingDatesRepository bookingDatesRepository) {
         this.repository = bookingDatesRepository;
     }
 
     public List<BookingDatesEntity> loadAll() {
         log.info("Executing find all booking dates ...");
-        return repository.findAll();
+        return (List<BookingDatesEntity>) repository.findAll();
     }
 
-    public Optional<BookingDatesEntity> loadOne(UUID gameId) {
+    public Optional<BookingDatesEntity> loadOne(Long gameId) {
         log.info("Executing find booking date with id " + gameId + " ...");
         return repository.findById(gameId);
     }
@@ -50,7 +49,7 @@ public class BookingDatesService {
         return repository.save(updateBookingDate);
     }
 
-    public void delete(UUID bookingDateId) {
+    public void delete(Long bookingDateId) {
         log.info("Executing delete game with id " + bookingDateId + " ...");
         repository.deleteById(bookingDateId);
     }
