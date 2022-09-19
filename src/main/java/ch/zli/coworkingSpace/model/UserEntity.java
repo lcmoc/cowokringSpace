@@ -1,12 +1,8 @@
 package ch.zli.coworkingSpace.model;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.UUID;
 
 @Getter
 @Setter
