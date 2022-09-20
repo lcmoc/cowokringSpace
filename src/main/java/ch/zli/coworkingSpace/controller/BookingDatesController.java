@@ -2,10 +2,13 @@ package ch.zli.coworkingSpace.controller;
 
 import ch.zli.coworkingSpace.model.BookingDatesEntity;
 import ch.zli.coworkingSpace.service.BookingDatesService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
@@ -19,6 +22,11 @@ public class BookingDatesController {
         this.bookingDatesService = bookingDatesService;
     }
 
+    @Operation(
+            summary = "Get all Booking Dates",
+            description = "Loads all Booking Dates from database.",
+            security = {@SecurityRequirement(name = "JWT Auth")}
+    )
     @GetMapping("/bookings")
     public ResponseEntity<Iterable<BookingDatesEntity>> getBookingDates() {
         return ResponseEntity
@@ -27,9 +35,14 @@ public class BookingDatesController {
                 .body(bookingDatesService.loadAll());
     }
 
+    @Operation(
+            summary = "Get one specific date by id",
+            description = "Loads one specific date by id from database.",
+            security = {@SecurityRequirement(name = "JWT Auth")}
+    )
     @GetMapping("/bookings/{id}")
     public ResponseEntity<Optional<BookingDatesEntity>>
-    getJoke(@PathVariable long id) {
+    getBookingDate(@PathVariable long id) {
         Optional<BookingDatesEntity> bookingDate = bookingDatesService.loadOne(id);
 
         if (bookingDate.isPresent()) {
@@ -44,9 +57,15 @@ public class BookingDatesController {
         }
     }
 
+    @Operation(
+            summary = "Create a new booking date",
+            description = "Creates a new booking date in database.",
+            security = {@SecurityRequirement(name = "JWT Auth")}
+    )
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/bookings")
     public ResponseEntity<BookingDatesEntity>
-    addJoke(@RequestBody BookingDatesEntity bookingDate) {
+    addBookingDate(@RequestBody BookingDatesEntity bookingDate) {
         System.out.println("booking created");
 
         bookingDatesService.create(bookingDate);
@@ -56,9 +75,15 @@ public class BookingDatesController {
                 .body(bookingDate);
     }
 
+    @Operation(
+            summary = "Delete an existing booking date",
+            description = "Deletes one specific and existing booking date in database.",
+            security = {@SecurityRequirement(name = "JWT Auth")}
+    )
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/bookings/{id}")
     public ResponseEntity<?>
-    deleteJoke(@PathVariable long id) {
+    deleteBookingDate(@PathVariable long id) {
         Optional<BookingDatesEntity> bookingDate = bookingDatesService.loadOne(id);
 
         if (bookingDate.isPresent()) {
@@ -70,9 +95,15 @@ public class BookingDatesController {
         }
     }
 
+    @Operation(
+            summary = "Update an existing booking date",
+            description = "Updates one specific and existing booking date in database.",
+            security = {@SecurityRequirement(name = "JWT Auth")}
+    )
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/bookings/{id}")
     public ResponseEntity<BookingDatesEntity>
-    updateJoke(@RequestBody BookingDatesEntity bookingDate) {
+    updateBookingDate(@RequestBody BookingDatesEntity bookingDate) {
 
         bookingDatesService.create(bookingDate);
         return ResponseEntity.status(HttpStatus.CREATED)  // HTTP 201
