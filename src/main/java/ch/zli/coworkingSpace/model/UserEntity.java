@@ -1,4 +1,5 @@
 package ch.zli.coworkingSpace.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,17 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity(name = "USER")
 public class UserEntity implements Serializable {
+    public UserEntity(String firstname, String lastname, String email, String password, String role, String description, String job, String gender) {
+        this.firstName = firstname;
+        this.lastName = lastname;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.description = description;
+        this.job = job;
+        this.gender = gender;
+    }
+
     @Column(name = "id", updatable = false, nullable = false)
     @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
@@ -32,13 +44,12 @@ public class UserEntity implements Serializable {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "is_admin", nullable = false)
-    private boolean isAdmin;
+    @Column(name = "role")
+    private String role;
 
-    @Column(name = "password", nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @Column(name = "email", nullable = false)
     private String email;
-
 }

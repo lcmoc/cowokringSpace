@@ -4,6 +4,7 @@ import ch.zli.coworkingSpace.model.BookingDatesEntity;
 import ch.zli.coworkingSpace.model.UserEntity;
 import ch.zli.coworkingSpace.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,6 +32,8 @@ public class UserService {
 
     public UserEntity create(UserEntity userEntity) {
         log.info("Executing create booking date with id " + userEntity.getId() + " ...");
+        userEntity.setPassword(BCrypt.hashpw(userEntity.getPassword(), BCrypt.gensalt()));
+
         return repository.save(userEntity);
     }
 

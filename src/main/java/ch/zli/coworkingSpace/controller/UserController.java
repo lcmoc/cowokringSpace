@@ -55,7 +55,7 @@ public class UserController {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(user);
         } else {
-            System.out.println("Accessing single joke, HTTP: 404");
+            System.out.println("Accessing single user, HTTP: 404");
             return ResponseEntity.notFound().build();
         }
     }
@@ -90,7 +90,7 @@ public class UserController {
         Optional<UserEntity> user = userService.loadOne(id);
 
         if (user.isPresent()) {
-            System.out.println("removed bookingDate");
+            System.out.println("removed user");
             userService.delete(id);
             return ResponseEntity.noContent().build();  // HTTP 204
         } else {
@@ -106,7 +106,7 @@ public class UserController {
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/users/{id}")
     public ResponseEntity<UserEntity>
-    updateBookingDate(@RequestBody UserEntity user) {
+    updateUser(@RequestBody UserEntity user) {
 
         userService.create(user);
         return ResponseEntity.status(HttpStatus.CREATED)  // HTTP 201

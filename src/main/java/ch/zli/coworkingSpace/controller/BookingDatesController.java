@@ -36,8 +36,8 @@ public class BookingDatesController {
     }
 
     @Operation(
-            summary = "Get one specific date by id",
-            description = "Loads one specific date by id from database.",
+            summary = "Get one specific booking date by id",
+            description = "Loads one specific booking date by id from database.",
             security = {@SecurityRequirement(name = "JWT Auth")}
     )
     @GetMapping("/bookings/{id}")
@@ -46,13 +46,13 @@ public class BookingDatesController {
         Optional<BookingDatesEntity> bookingDate = bookingDatesService.loadOne(id);
 
         if (bookingDate.isPresent()) {
-            System.out.println("Accessing single date, HTTP: 200");
+            System.out.println("Accessing single booking date, HTTP: 200");
             return ResponseEntity
                     .status(HttpStatus.OK)  // HTTP 200
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(bookingDate);
         } else {
-            System.out.println("Accessing single joke, HTTP: 404");
+            System.out.println("Accessing single booking date, HTTP: 404");
             return ResponseEntity.notFound().build();
         }
     }
@@ -66,7 +66,7 @@ public class BookingDatesController {
     @PostMapping("/bookings")
     public ResponseEntity<BookingDatesEntity>
     addBookingDate(@RequestBody BookingDatesEntity bookingDate) {
-        System.out.println("booking created");
+        System.out.println("booking date created");
 
         bookingDatesService.create(bookingDate);
         return ResponseEntity
