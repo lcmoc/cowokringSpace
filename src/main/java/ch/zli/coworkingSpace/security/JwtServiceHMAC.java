@@ -28,6 +28,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+
 @Service
 public class JwtServiceHMAC implements UserDetailsService {
     @Autowired
@@ -41,7 +42,7 @@ public class JwtServiceHMAC implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        val user = userRepository.findById(UUID.fromString(userId)).orElseGet(null);
+        val user = userRepository.findById(Long.valueOf(userId)).orElseGet(null);
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }

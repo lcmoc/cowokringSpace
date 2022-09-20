@@ -50,21 +50,21 @@ public class AuthController {
             @RequestParam(name = "refresh_token", required = false)
             String refreshToken,
             @Parameter(description = "If password is selected as grant type this field is needed", required = false)
-            @RequestParam(name = "firstName", required = false)
-            String firstName,
+            @RequestParam(name = "email", required = false)
+            String email,
             @Parameter(description = "If password is selected as grant type this field is needed", required = false)
             @RequestParam(name = "password", required = false)
             String password) throws GeneralSecurityException, IOException {
 
         switch (grantType) {
             case "password" -> {
-                val optionalMember = userRepository.findByFirstName(firstName);
+                val optionalMember = userRepository.findByEmail(email);
                 if (optionalMember.isEmpty()) {
-                    throw new IllegalArgumentException("Firstname or password wrong");
+                    throw new IllegalArgumentException("emalil or password wrong");
                 }
 
                 if (!BCrypt.checkpw(password, optionalMember.get().getPassword())) {
-                    throw new IllegalArgumentException("Firstname or password wrong");
+                    throw new IllegalArgumentException("email or password wrong");
                 }
 
                 val member = optionalMember.get();
@@ -76,7 +76,7 @@ public class AuthController {
                     scopes.add("ADMIN");
                 }
 
-                val newAccessToken = jwtService.createNewJWT(id, member.getId().toString(), member.getFirstName(), scopes);
+                val newAccessToken = jwtService.createNewJWT(id, member.getId().toString(), member.getEmail(), scopes);
                 val newRefreshToken = jwtService.createNewJWTRefresh(id, member.getId().toString());
 
                 return new TokenResponse(newAccessToken, newRefreshToken, "Bearer", LocalDateTime.now().plusDays(14).toEpochSecond(ZoneOffset.UTC), LocalDateTime.now().plusDays(1).toEpochSecond(ZoneOffset.UTC));
@@ -84,7 +84,7 @@ public class AuthController {
             case "refresh_token" -> {
                 val jwt = jwtService.verifyJwt(refreshToken, false);
 
-                val optionalMember = userRepository.findById(UUID.fromString(jwt.getClaim("user_id").asString()));
+                val optionalMember = userRepository.findById((jwt.getClaim("user_id").asLong()));
                 if (optionalMember.isEmpty()) {
                     throw new IllegalArgumentException("Invalid refresh token");
                 }
@@ -115,6 +115,9 @@ public class AuthController {
     @PostMapping(value = "/register", produces = "application/json")
     public TokenResponse register(
             @Parameter(description = "First Name", required = true)
+            @RequestParam(name = "id", required = true)
+                    Long id,
+            @Parameter(description = "First Name", required = true)
             @RequestParam(name = "firstName", required = true)
                     String firstName,
             @Parameter(description = "Last Name", required = true)
@@ -131,12 +134,15 @@ public class AuthController {
                     String userDescription,
             @Parameter(description = "Password", required = true)
             @RequestParam(name = "password", required = true)
-            String password
+            String password,
+            @RequestParam(name = "email", required = true)
+                    String email
+
     ) throws GeneralSecurityException, IOException {
         String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
-        val newMember = new UserEntity(UUID.randomUUID(), firstName, lastName, gender, job, userDescription, false, password);
+        val newMember = new UserEntity(id, firstName, lastName, gender, job, userDescription, false, password, email);
         userRepository.save(newMember);
 
-        return getToken("password", "", firstName, password);
+        return getToken("password", "", email, password);
     }
 }

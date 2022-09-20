@@ -15,7 +15,7 @@ import java.util.UUID;
 public class UserEntity implements Serializable {
     @Column(name = "id", updatable = false, nullable = false)
     @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
-    UUID id;
+    Long id;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -37,5 +37,8 @@ public class UserEntity implements Serializable {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "email", nullable = false)
+    private String email;
 
 }

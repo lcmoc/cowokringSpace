@@ -31,14 +31,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     public void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         val authToken = jwtService.resolveKey(request);
-        UUID userId = null;
+        Long userId = null;
         var requestedAuthorities = new ArrayList<String>();
 
         if (authToken != null) {
             DecodedJWT decoded;
             try {
                 decoded = jwtService.verifyJwt(authToken, true);
-                userId = UUID.fromString(decoded.getClaim("user_id").asString());
+                userId = decoded.getClaim("user_id").asLong();
                 requestedAuthorities = jwtService.getRequestedAuthorities(decoded);
             } catch (GeneralSecurityException e) {
                 throw new RuntimeException(e);

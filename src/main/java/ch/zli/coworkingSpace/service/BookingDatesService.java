@@ -21,9 +21,9 @@ public class BookingDatesService {
         return (List<BookingDatesEntity>) repository.findAll();
     }
 
-    public Optional<BookingDatesEntity> loadOne(Long gameId) {
-        log.info("Executing find booking date with id " + gameId + " ...");
-        return repository.findById(gameId);
+    public Optional<BookingDatesEntity> loadOne(Long bookingId) {
+        log.info("Executing find booking date with id " + bookingId + " ...");
+        return repository.findById(bookingId);
     }
 
     public BookingDatesEntity create(BookingDatesEntity bookingDate) {
