@@ -1,8 +1,6 @@
 package ch.zli.coworkingSpace.controller;
 
-import ch.zli.coworkingSpace.model.BookingDatesEntity;
 import ch.zli.coworkingSpace.model.UserEntity;
-import ch.zli.coworkingSpace.service.BookingDatesService;
 import ch.zli.coworkingSpace.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -11,13 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Controller
 public class UserController {
@@ -33,6 +28,7 @@ public class UserController {
             description = "Loads all user from database.",
             security = {@SecurityRequirement(name = "JWT Auth")}
     )
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/users")
     public ResponseEntity<List<UserEntity>> getUsers() {
         return ResponseEntity
@@ -46,6 +42,7 @@ public class UserController {
             description = "Loads one specific user by id from database.",
             security = {@SecurityRequirement(name = "JWT Auth")}
     )
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/users/{id}")
     public ResponseEntity<Optional<UserEntity>>
     getUser(@PathVariable Long id) {
