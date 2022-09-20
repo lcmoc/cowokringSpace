@@ -129,7 +129,7 @@ public class AuthController {
             @RequestParam(name = "job", required = true)
                     String job,
             @Parameter(description = "user description", required = true)
-            @RequestParam(name = "firstName", required = true)
+            @RequestParam(name = "description", required = true)
                     String userDescription,
             @Parameter(description = "Password", required = true)
             @RequestParam(name = "password", required = true)
@@ -141,7 +141,7 @@ public class AuthController {
 
     ) throws GeneralSecurityException, IOException {
         String passwordHash = BCrypt.hashpw(password, BCrypt.gensalt());
-        val newMember = new UserEntity(firstName, lastName, email, passwordHash, role, gender, userDescription, job);
+        val newMember = new UserEntity(firstName, lastName, email, passwordHash, role, userDescription, job, gender);
         memberRepository.save(newMember);
 
         return getToken("password", "", email, password);
