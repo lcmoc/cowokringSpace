@@ -1,16 +1,21 @@
 package ch.zli.coworkingSpace.model;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.UUID;
 
 @Getter
 @Setter
+@RequiredArgsConstructor
+@AllArgsConstructor
 @Entity(name = "USER")
 public class UserEntity implements Serializable {
     @Column(name = "id", updatable = false, nullable = false)
     @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long id;
+    UUID id;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
