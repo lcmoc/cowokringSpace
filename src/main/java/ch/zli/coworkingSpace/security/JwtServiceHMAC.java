@@ -1,6 +1,5 @@
 package ch.zli.coworkingSpace.security;
 
-import ch.zli.coworkingSpace.model.UserEntity;
 import ch.zli.coworkingSpace.repository.UserRepository;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -26,8 +25,6 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
-
 
 @Service
 public class JwtServiceHMAC implements UserDetailsService {
@@ -36,18 +33,18 @@ public class JwtServiceHMAC implements UserDetailsService {
 
     private final String secret = "YcMyGyq?q&SAy86MR!h";
 
-    public UserDetails getUserDetails(UserEntity user, List<String> requestedAuthorities) {
-        return new User(user.getId().toString(), "", getAuthority(requestedAuthorities));
+    public UserDetails getUserDetails(ch.zli.coworkingSpace.model.UserEntity userEntity, List<String> requestedAuthorities) {
+        return new User(String.valueOf(userEntity.getId()), "", getAuthority(requestedAuthorities));
     }
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        val user = userRepository.findById(Long.valueOf(userId)).orElseGet(null);
+        val user = userRepository.findById(Long.valueOf(userId));
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }
 
-        return new User(user.getId().toString(), "", new ArrayList<SimpleGrantedAuthority>());
+        return new User(String.valueOf(Long.valueOf(userId)), "", new ArrayList<SimpleGrantedAuthority>());
     }
 
     public List<SimpleGrantedAuthority> getAuthority(List<String> requestedAuthorities) {
@@ -140,7 +137,7 @@ public class JwtServiceHMAC implements UserDetailsService {
     }
 
     private Date convertToDate(LocalDateTime dateToConvert) {
-        return Date
+        return java.util.Date
                 .from(dateToConvert.atZone(ZoneId.systemDefault())
                         .toInstant());
     }
