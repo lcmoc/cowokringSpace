@@ -4,6 +4,8 @@ import ch.zli.coworkingSpace.model.BookingDatesEntity;
 import ch.zli.coworkingSpace.repository.BookingDatesRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,19 +33,9 @@ public class BookingDatesService {
         return repository.save(bookingDate);
     }
 
+    @Transactional
     public BookingDatesEntity update(BookingDatesEntity updateBookingDate) {
         log.info("Executing update booking date with id " + updateBookingDate.getId() + " ...");
-
-        /*val entry = Optional<GameEntity> = repository.findById(updatedGame.getId());
-
-        if(entry.isPresent()) {
-            return repository.save(updatedGame);
-        }
-         */
-
-        //present if erstellen
-        // transaction erstellen
-
         return repository.save(updateBookingDate);
     }
 

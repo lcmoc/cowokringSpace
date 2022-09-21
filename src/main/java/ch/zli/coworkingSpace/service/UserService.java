@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -33,23 +34,13 @@ public class UserService {
     public UserEntity create(UserEntity userEntity) {
         log.info("Executing create booking date with id " + userEntity.getId() + " ...");
         userEntity.setPassword(BCrypt.hashpw(userEntity.getPassword(), BCrypt.gensalt()));
-
         return repository.save(userEntity);
     }
 
+    @Transactional
     public UserEntity update(UserEntity updateUser) {
         log.info("Executing update booking date with id " + updateUser.getId() + " ...");
-
-        /*val entry = Optional<GameEntity> = repository.findById(updatedGame.getId());
-
-        if(entry.isPresent()) {
-            return repository.save(updatedGame);
-        }
-         */
-
-        //present if erstellen
-        // transaction erstellen
-
+        updateUser.setPassword(BCrypt.hashpw(updateUser.getPassword(), BCrypt.gensalt()));
         return repository.save(updateUser);
     }
 
