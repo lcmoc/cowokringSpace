@@ -1,0 +1,197 @@
+commit ce62a033119000d41dea5de228479e3f241d597a
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Wed Sep 21 14:33:14 2022 +0200
+
+    updated readme
+
+commit 5ea7498ceca12f80978eaff121b3d26028bdec64
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Wed Sep 21 14:22:53 2022 +0200
+
+    implemented UserController integration test
+
+commit 65e96c24c98795c75bb9c086dc9b1e1935e6a91d
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Wed Sep 21 14:12:11 2022 +0200
+
+    corrected integration tests
+
+commit d150af866a9b8a1945ff808e9e6d007984f999e0
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Wed Sep 21 13:59:29 2022 +0200
+
+    updated PostmanApiRequests and added more booking dates
+
+commit 2b8aa3064cf8138e53556c8561a28d29abd76ab5
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Wed Sep 21 13:50:38 2022 +0200
+
+    fixed authorisation
+
+commit 5e093093dcfd116edca342a221d7dd28f346691c
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Wed Sep 21 13:41:40 2022 +0200
+
+    added BookingControllerTest
+
+commit 9df7a2a8defa65b782c30fb464dbe8c3f0b065f3
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Wed Sep 21 13:11:05 2022 +0200
+
+    added Postman api requests and edited readme
+
+commit 8a691b48b71855d740ba81db03630edd4a2d97c4
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Wed Sep 21 10:41:45 2022 +0200
+
+    added price field
+
+commit 533567b65ca888cc990139e2bc72345955c55f87
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Wed Sep 21 10:24:21 2022 +0200
+
+    added some missing statements and password hashing in update
+
+commit 78c60a56a1413be80c883e57e2928656f8d921ec
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Wed Sep 21 09:15:08 2022 +0200
+
+    updated readme file
+
+commit 615cdbe4104d7e28e60c72df47bd426a3a6f5fe3
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Wed Sep 21 00:31:47 2022 +0200
+
+    fixed mistakes im authcontroller
+
+commit 482d50ba2e6373f03f0677902a467dfca1a7f082
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Tue Sep 20 23:04:51 2022 +0200
+
+    clean up and autorisation contoller refactoring
+
+commit 55b29514ca8e55e9df1b0a0272d6534dce2736c4
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Tue Sep 20 21:10:44 2022 +0200
+
+    added admin authorisation for accsessing user data
+
+commit 6eac151ca4a23730d629a69d012a58102dcc1041
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Tue Sep 20 14:49:41 2022 +0200
+
+    fixing authentikation
+
+commit cb13f5cdad2ae589d4321c00a8208e2555a695f3
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Tue Sep 20 10:39:38 2022 +0200
+
+    used right path in openApiConfig and created operations in BokkingDatesController
+
+commit e6cf856e4b6649565b46561bf7e5a1c9c5dce9eb
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Tue Sep 20 07:12:56 2022 +0200
+
+    configured AuthController, implemented token response
+
+commit 4499a842f5d6671afd61f4052d2af8a77196d5cd
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Mon Sep 19 22:25:21 2022 +0200
+
+    added openApi and security config
+
+commit 820bfe4e03f49a0c0f3c616e7ba68b81294cf94f
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Mon Sep 19 22:21:45 2022 +0200
+
+    implemented jwt authentication
+
+commit 5b98a3bac484002f323f97dcff7c55a4ea58551a
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Mon Sep 19 22:00:01 2022 +0200
+
+    implemented user repository
+
+commit 6c3012ad7d66e8d45ca086be56733c8e72672b75
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Mon Sep 19 21:57:32 2022 +0200
+
+    removed unused imports
+
+commit 7949f6efc10a7886c70ad26cd1c7501300a5b7f3
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Mon Sep 19 21:55:39 2022 +0200
+
+    changed id from uuid to long, refactored the bookingdate controller
+
+commit cb7df9958936a6997d09ebb402f80a5001a3003e
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Mon Sep 19 21:15:43 2022 +0200
+
+    added booking date database table
+
+commit b1cc5a106a105019c42b549a36f210adb0ea1b77
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Mon Sep 19 16:19:47 2022 +0200
+
+    added game not found exception, implemented load one booking date
+
+commit 87b0c3186698703f661c390658750c9e5596c02e
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Mon Sep 19 15:58:02 2022 +0200
+
+    created boooking dates repository, service and controller
+
+commit 58cf924273844ee2c6f35359f21e81598ed01a3d
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Mon Sep 19 15:33:01 2022 +0200
+
+    added booking dates entity
+
+commit 443c05188a9f7128089b15327de3d0f7d7540e26
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Mon Sep 19 14:12:12 2022 +0200
+
+    added user entity
+
+commit 8fb84e834560ce61fb35474dd4910b9d82c24121
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Mon Sep 19 11:20:08 2022 +0200
+
+    added more dependencys
+
+commit 34f91816da81a8d89ff705e7d2da5395603f4309
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Sun Sep 18 17:34:26 2022 +0200
+
+    created database connection
+
+commit 200948053a83956c673df3ff14a6836919c24a08
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Sun Sep 18 17:32:21 2022 +0200
+
+    added mysql driver dependency
+
+commit 8247dfb239a1679cd611e21e4e30d9285dc19812
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Sun Sep 18 17:26:32 2022 +0200
+
+    created coworking space database
+
+commit 4851c97d56d5f74cd2e776cb322e3f5d9737c54d
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Sun Sep 18 17:18:47 2022 +0200
+
+    added docker compose file
+
+commit f44e367038457fc9479bfd9ee1a6903a6a54b692
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Sun Sep 18 17:12:27 2022 +0200
+
+    added file structure
+
+commit 043447fe32cc6a1774f4fbda07e922b88551dd8b
+Author: Luca Mock <luca.mock@ringieraxelspringer.ch>
+Date:   Sun Sep 18 17:02:00 2022 +0200
+
+    created initial project files
