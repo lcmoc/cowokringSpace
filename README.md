@@ -7,12 +7,13 @@ Der Coworking Space ist ein Arbeitsplatz Buchungssystem, welches mit Java Spring
 1. Das Projekt im Zip file ist nicht vollständig, gehe auf https://github.com/lcmoc/cowokringSpace und clone das gesamte Projekt
 2. Stelle sicher, dass Docker installiert ist und läuft.
 3. Stelle sicher, dass Intellij installiert ist und läuft.
+4. Stelle sicher das Postman installiert ist und läuft.
 
 # Projekt Starten
 1. Öffne das zuvor geclonte Projekt mit Intellij.
 2. Navigiere mit dem Command `cd src/main/docker` im terminal zum docker Ordner
 3. Starte die datenbank dann im Docker ordner über das Terminal mit `docker compose up`
 4. Starte das Projekt mit Intellij.
-5. Probiere die Client-Applikation unter http://localhost:8080 aus.
+5. Importiere das Postman json im (`PostmanTestApiRequests`) Folder, in Postman
 
 # Testing
