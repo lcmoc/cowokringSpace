@@ -134,8 +134,10 @@ public class AuthController {
             @Parameter(description = "Password", required = true)
             @RequestParam(name = "password", required = true)
                     String password,
+            @Parameter(description = "E-Mail", required = true)
             @RequestParam(name = "email", required = true)
                     String email,
+            @Parameter(description = "Role", required = true)
             @RequestParam(name = "role", required = true)
                     String role
 

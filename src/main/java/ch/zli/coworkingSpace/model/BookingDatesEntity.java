@@ -27,4 +27,6 @@ public class BookingDatesEntity {
     @Column(name = "user_id", nullable = false)
     private int user_id;
 
+    @Column(name = "price", nullable = false)
+    private int price;
 }
