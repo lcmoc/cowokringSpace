@@ -17,3 +17,5 @@ Der Coworking Space ist ein Arbeitsplatz Buchungssystem, welches mit Java Spring
 5. Importiere das Postman json im (`PostmanTestApiRequests`) Folder, in Postman
 
 # Testing
+1. Um die app zu testen gehe zu den Intellij Test Klassen
+2. Starte die Tests im Tests Folder in dem man auf den Startknopf drückt.
